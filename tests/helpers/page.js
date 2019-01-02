@@ -36,8 +36,18 @@ class CustomPage {
     // console.log(sig);
     
     // set the cookies on the page 
-    await this.page.setCookie({name: 'session',value : session, domain: ''})
-    await this.page.setCookie({name: 'session.sig',value : sig, domain:''})
+    await this.page.setCookie({
+      name: 'session',
+      value : session,
+      domain: '',
+      url: 'http://localhost:3000'
+    })
+    await this.page.setCookie({
+      name: 'session.sig',
+      value : sig,
+      domain:'',
+      url: 'http://localhost:3000'
+    })
     // need a refresh to simulate the login flow but in the blogs page for the purpose of the blog test
     await this.page.goto('http://localhost:3000/blogs')
     
