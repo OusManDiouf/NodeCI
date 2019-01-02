@@ -2,22 +2,21 @@ language: node_js
 node_js:
   - "8"
 dist: trusty
-sudo: required
+sudo: false
 addons:
   chrome: stable
-  hostname: localhost
 before_install:
   - # start your web application and listen on `localhost`
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost:3000 &
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 before_script:
   - nohup npm run start &
-  - sleep 15
+  - sleep 3
 services:
   - mongodb
   - redis-server
 env:
   - NODE_ENV=ci
-  - PORT 3000
+  - PORT=3000
 cache:
   directories:
     - node_modules
